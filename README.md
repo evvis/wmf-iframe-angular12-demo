@@ -1,7 +1,5 @@
 # Webpack Module Federation Angular 12 Demo
 
----
-
 This demo show how to configure and run Angular 12 using Webpack
 Module Federation. Some of these projects also have Angular Material 
 to show benefits of WMF in comparison with iframe approach. 
