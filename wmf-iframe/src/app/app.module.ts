@@ -8,17 +8,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppDialogComponent } from './app-dialog.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AppDialogComponent
-  ],
+  declarations: [AppComponent, AppDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

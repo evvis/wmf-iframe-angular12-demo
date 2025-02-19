@@ -10,7 +10,7 @@ sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
 
 module.exports = {
   output: {
-    uniqueName: "wmfHost",
+    uniqueName: "wmfIframe",
     publicPath: "auto",
   },
   optimization: {
@@ -23,31 +23,23 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      // For remotes (please adjust)
-      // name: "wmfHost",
-      // filename: "remoteEntry.js",
-
-      // For hosts (please adjust)
-      // remotes: {
-      //   "wmf-host": "wmf-host@http://localhost:5555/remoteEntry.js",
-      //   preversion: "preversion@http://localhost:5558/remoteEntry.js",
-      // },
-      name: "wmfHost",
+      name: "wmfIframe",
       filename: "remoteEntry.js",
-      exposes: {
-        "./hello": "./src/hello.js",
-        "@angular/common": "./node_modules/@angular/common",
-      },
-      remotes: {
-        // wmfHost: "wmfHost@http://localhost:5555/remoteEntry.js",
-      },
+      // exposes: {
+      //   "./AppModule": "./src/app/app.module.ts",
+      // },
+      // exposes: {
 
+      // },
+      remotes: {
+        wmfHost: "wmfHost@http://localhost:5555/remoteEntry.js",
+      },
       shared: share({
         "@angular/core": {
           singleton: true,
           strictVersion: true,
           requiredVersion: "12.2.17",
-          //           eager: true,
+          // eager: false,
         },
         "@angular/common": {
           singleton: true,
@@ -56,28 +48,20 @@ module.exports = {
           shareScope: "wmfHost",
           eager: false,
         },
-        "@angular/common/http": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "auto",
-          //           eager: true,
-        },
         "@angular/router": {
           singleton: true,
           strictVersion: true,
           requiredVersion: "12.2.17",
-          //           eager: true,
+          // eager: false,
         },
         rxjs: {
           singleton: true,
           strictVersion: true,
           requiredVersion: "6.6.0",
-          //           eager: true,
+          // eager: false,
         },
-
         ...sharedMappings.getDescriptors(),
       }),
     }),
-    sharedMappings.getPlugin(),
   ],
 };

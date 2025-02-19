@@ -4,39 +4,60 @@ const path = require("path");
 const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, 'tsconfig.json'),
-  [/* mapped paths to share */]);
+sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
+  /* mapped paths to share */
+]);
 
 module.exports = {
   output: {
     uniqueName: "wmfRemote1",
-    publicPath: "auto"
+    publicPath: "auto",
   },
   optimization: {
-    runtimeChunk: false
+    runtimeChunk: false,
   },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
-    }
+    },
   },
   plugins: [
     new ModuleFederationPlugin({
-        name: "wmfRemote1",
-        filename: "remoteEntry.js",
-        exposes: {
-            './RootModule': './src/features/root/root.module.ts',
+      name: "wmfRemote1",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./RootModule": "./src/features/root/root.module.ts",
+      },
+      shared: share({
+        "@angular/core": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "12.2.17",
         },
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/common": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "12.2.17",
+        },
+        "@angular/common/http": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@angular/router": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "12.2.17",
+        },
+        rxjs: {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "6.6.0",
+        },
 
-          ...sharedMappings.getDescriptors()
-        })
+        ...sharedMappings.getDescriptors(),
+      }),
     }),
-    sharedMappings.getPlugin()
+    sharedMappings.getPlugin(),
   ],
 };

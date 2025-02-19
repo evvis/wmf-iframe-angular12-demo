@@ -1,4 +1,6 @@
-<iframe
-  src="http://localhost:4200"
-  sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts allow-popups allow-downloads"
-></iframe>
+<ng-container *ngIf="!insideIframe">
+  <iframe
+    [src]="requiredLink"
+    sandbox="allow-scripts allow-same-origin"
+  ></iframe>
+</ng-container>
