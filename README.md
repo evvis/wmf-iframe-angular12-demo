@@ -4,6 +4,12 @@ This demo show how to configure and run Angular 12 using Webpack
 Module Federation. Some of these projects also have Angular Material 
 and ag-grid to show benefits of WMF in comparison with iframe approach. 
 
+The purpose of this example is to demonstrate how Module Federation can be used for projects 
+with a host application, where child applications are deployed inside an iframe.
+In this approach, library loading occurs after the host initializes, 
+allowing all applications opened in the iframe to retrieve the required libraries 
+from the browser cache.
+
 ## How to run the demo
 
 You need to install dependencies and launch all the projects in this repository:
@@ -46,9 +52,12 @@ After that, you can open this URL in your favourite browser: `http://localhost:5
 
 To test the iframe functionality, go to `http://localhost:5558`.
 
-When the host application is running, you can see the package source in the network tab. If the host application is unavailable or turned off, the packages will be loaded from the iframe project.
+When the host application is running, you can see the package source in the network tab. 
+If the host application is unavailable or turned off, the packages will be loaded from the iframe project.
 
-To ensure that the iframe forcibly loads libraries from the host, the `version` of each package in the host’s configuration is set one minor `version` higher (not necessarily an existing one). This workaround eliminates the need for additional actions on the part of child applications.
+To ensure that the iframe forcibly loads libraries from the host, the `version` of each package 
+in the host’s configuration is set one minor `version` higher (not necessarily an existing one). 
+This workaround eliminates the need for additional actions on the part of child applications.
 
 (I know this is not entirely correct, and I would appreciate any suggestions on how to achieve the same effect in a more elegant and proper way.)
 
