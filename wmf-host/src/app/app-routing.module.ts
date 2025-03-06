@@ -14,7 +14,7 @@ const routes: Routes = [
         path: 'remote1',
         loadChildren: () =>
           loadRemoteModule({
-            remoteEntry: 'http://localhost:5555/project2/remoteEntry.js',
+            remoteEntry: 'http://localhost:5556/remoteEntry.js',
             remoteName: 'wmfRemote1',
             exposedModule: './RootModule',
           }).then((m) => m.RootModule),
@@ -23,13 +23,12 @@ const routes: Routes = [
         path: 'remote2',
         loadChildren: () =>
           loadRemoteModule({
-            remoteEntry: 'http://localhost:5555/project3/remoteEntry.js',
+            remoteEntry: 'http://localhost:5557/remoteEntry.js',
             remoteName: 'wmfRemote2',
             exposedModule: './RootModule',
           }).then((m) => m.RootModule),
       },
-      { path: 'project1', component: IframeComponent },
-      { path: 'project4', component: IframeComponent },
+      { path: 'remote3', component: IframeComponent },
     ],
   },
 ];

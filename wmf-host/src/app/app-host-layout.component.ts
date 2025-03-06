@@ -9,8 +9,7 @@ import { Component } from '@angular/core';
       <ul>
         <li routerLinkActive="active"><a routerLink="remote1">Remote 1</a></li>
         <li routerLinkActive="active"><a routerLink="remote2">Remote 2</a></li>
-        <li routerLinkActive="active"><a routerLink="project1">Iframe</a></li>
-        <li routerLinkActive="active"><a routerLink="project4">ANG 16</a></li>
+        <li routerLinkActive="active"><a routerLink="remote3">Remote 3</a></li>
       </ul>
 
       <div class="remotes">

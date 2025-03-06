@@ -32,27 +32,27 @@ module.exports = {
         "@angular/core": {
           singleton: true,
           strictVersion: true,
-          requiredVersion: "12.2.17",
+          requiredVersion: "~12.2.17",
         },
         "@angular/common": {
           singleton: true,
           strictVersion: true,
-          requiredVersion: "12.2.17",
+          requiredVersion: "~12.2.17",
         },
         "@angular/common/http": {
           singleton: true,
           strictVersion: true,
-          requiredVersion: "auto",
+          requiredVersion: "~auto",
         },
         "@angular/router": {
           singleton: true,
           strictVersion: true,
-          requiredVersion: "12.2.17",
+          requiredVersion: "~12.2.17",
         },
         rxjs: {
           singleton: true,
           strictVersion: true,
-          requiredVersion: "6.6.0",
+          requiredVersion: "~6.6.0",
         },
 
         ...sharedMappings.getDescriptors(),

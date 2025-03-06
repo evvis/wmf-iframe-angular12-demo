@@ -46,11 +46,6 @@
                 "glob": "**/*",
                 "input": "dist/project3",
                 "output": "/project3/"
-              },
-              {
-                "glob": "**/*",
-                "input": "dist/project4",
-                "output": "/project4/"
               }
             ],
             "styles": [
@@ -87,7 +82,7 @@
             "development": {
               "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
+              "vendorChunk": false,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

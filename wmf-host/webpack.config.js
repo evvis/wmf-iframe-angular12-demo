@@ -8,6 +8,88 @@ sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
   /* mapped paths to share */
 ]);
 
+// Полный список библиотек
+const sharedConfig = {
+  "@angular/animations": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@angular/common": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@angular/compiler": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@angular/core": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@angular/forms": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@angular/platform-browser": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@angular/platform-browser-dynamic": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@angular/router": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~12.2.17",
+    version: "12.2.18",
+  },
+  "@ag-grid-community/core": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~25.0.1",
+    version: "25.0.2",
+  },
+  "@ag-grid-community/angular": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~25.0.1",
+    version: "25.0.2",
+  },
+  "@ag-grid-community/client-side-row-model": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~25.0.1",
+    version: "25.0.2",
+  },
+  "@ag-grid-enterprise/all-modules": {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~25.0.1",
+    version: "25.0.2",
+  },
+  rxjs: {
+    singleton: true,
+    strictVersion: true,
+    requiredVersion: "~6.6.0",
+    version: "6.6.1",
+  },
+};
+
 module.exports = {
   output: {
     uniqueName: "wmfHost",
@@ -15,7 +97,9 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false,
+    minimize: true,
   },
+  mode: "development",
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -23,58 +107,14 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      // For remotes (please adjust)
-      // name: "wmfHost",
-      // filename: "remoteEntry.js",
-
-      // For hosts (please adjust)
-      // remotes: {
-      //   "wmf-host": "wmf-host@http://localhost:5555/remoteEntry.js",
-      //   preversion: "preversion@http://localhost:5558/remoteEntry.js",
-      // },
       name: "wmfHost",
       filename: "remoteEntry.js",
       exposes: {
-        "./hello": "./src/hello.js",
-        "@angular/common": "./node_modules/@angular/common",
+        "./mf-angular": "./src/mf-angular.version.js",
       },
-      remotes: {
-        // wmfHost: "wmfHost@http://localhost:5555/remoteEntry.js",
-      },
-
+      remotes: {},
       shared: share({
-        "@angular/core": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "12.2.17",
-          //           eager: true,
-        },
-        "@angular/common": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "12.2.17",
-          shareScope: "wmfHost",
-          eager: false,
-        },
-        "@angular/common/http": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "auto",
-          //           eager: true,
-        },
-        "@angular/router": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "12.2.17",
-          //           eager: true,
-        },
-        rxjs: {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "6.6.0",
-          //           eager: true,
-        },
-
+        ...sharedConfig,
         ...sharedMappings.getDescriptors(),
       }),
     }),

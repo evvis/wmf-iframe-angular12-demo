@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'iframe-example',
@@ -10,19 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 export class IframeComponent implements OnInit {
   requiredLink: SafeResourceUrl = '';
   insideIframe = false;
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.insideIframe = window !== window.parent;
 
-    console.log(this.route.snapshot);
-    const segment = this.route.snapshot.url
-      .map((segment) => segment.path)
-      .join('/');
     this.requiredLink = this.sanitizer.bypassSecurityTrustResourceUrl(
-      `http://localhost:5555/${segment}/`
+      `http://localhost:5558/`
     );
-
-    console.log(this.requiredLink);
   }
 }

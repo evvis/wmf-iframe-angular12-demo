@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AppDialogComponent } from './app-dialog.component';
-// @ts-ignore
-import * as asome from 'wmfHost/hello';
+import { Grid } from '@ag-grid-community/core';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +9,7 @@ import * as asome from 'wmfHost/hello';
 export class AppComponent {
   title = 'wmf-iframe';
 
-  constructor(private readonly matDialog: MatDialog) {
-    console.log('AppComponent  ', asome);
-  }
-
-  handleOpenDialog() {
-    this.matDialog.open(AppDialogComponent);
+  constructor() {
+    console.log('Grid', Grid);
   }
 }
