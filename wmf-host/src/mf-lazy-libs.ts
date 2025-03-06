@@ -13,7 +13,7 @@ export async function loadLazyLibs() {
     import('@ag-grid-community/client-side-row-model'),
     import('@ag-grid-enterprise/all-modules'),
     import('rxjs'),
-    // Добавьте другие библиотеки, которые нужно загрузить
+    // Add other libraries that need to be loaded.
   ]);
 
   results.forEach((result) => {

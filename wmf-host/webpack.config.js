@@ -8,7 +8,7 @@ sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
   /* mapped paths to share */
 ]);
 
-// Полный список библиотек
+// The full list of libraries to be loaded.
 const sharedConfig = {
   "@angular/animations": {
     singleton: true,

@@ -12,7 +12,7 @@ if (environment.production) {
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .then(() => {
-    // После успешного запуска приложения начинаем загрузку библиотек
+    // After successfully launching the application, we start loading the libraries.
     loadLazyLibs()
       .then(() => {
         console.log('Lazy libraries loaded');
