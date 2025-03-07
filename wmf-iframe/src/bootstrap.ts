@@ -4,13 +4,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-const loadRemoteModule = async () => {
-  try {
-    await import('wmfHost/mf-angular');
-  } catch (error) {
-    console.warn('Remote module not available, using fallback.');
-  }
-};
+try {
+  import('wmfHost/mf-angular');
+} catch (e) {}
 
 if (environment.production) {
   enableProdMode();
@@ -18,5 +14,4 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .then(() => loadRemoteModule())
   .catch((err) => console.error(err));

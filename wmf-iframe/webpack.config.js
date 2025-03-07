@@ -32,58 +32,72 @@ module.exports = {
         wmfHost: "wmfHost@http://localhost:5555/remoteEntry.js",
       },
 
+      // This is the shared configuration
       shared: share({
         "@angular/animations": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         "@angular/common": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         "@angular/compiler": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         "@angular/core": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         "@angular/forms": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         "@angular/platform-browser": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         "@angular/platform-browser-dynamic": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         "@angular/router": {
           singleton: true,
-          requiredVersion: "~12.2.17",
+          requiredVersion: "12.2.17",
+          version: "12.2.16",
         },
         rxjs: {
           singleton: true,
-          requiredVersion: "~6.6.0",
+          requiredVersion: "6.6.0",
+          version: "6.5.5",
         },
         "@ag-grid-community/core": {
           singleton: true,
-          requiredVersion: "~25.0.1",
+          requiredVersion: "25.0.1",
+          version: "25.0.0",
         },
         "@ag-grid-community/angular": {
           singleton: true,
-          requiredVersion: "~25.0.1",
+          requiredVersion: "25.0.1",
+          version: "25.0.0",
         },
         "@ag-grid-community/client-side-row-model": {
           singleton: true,
-          requiredVersion: "~25.0.1",
+          requiredVersion: "25.0.1",
+          version: "25.0.0",
         },
         "@ag-grid-enterprise/all-modules": {
           singleton: true,
-          requiredVersion: "~25.0.1",
+          requiredVersion: "25.0.1",
+          version: "25.0.0",
         },
       }),
     }),

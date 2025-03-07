@@ -55,9 +55,9 @@ To test the iframe functionality, go to `http://localhost:5558`.
 When the host application is running, you can see the package source in the network tab.
 If the host application is unavailable or turned off, the packages will be loaded from the iframe project.
 
-To ensure that the iframe forcibly loads libraries from the host, the `version` of each package
-in the host’s configuration is set one minor `version` higher (not necessarily an existing one).
-This workaround eliminates the need for additional actions on the part of child applications.
+For the iframe configuration, the library versions should be set one minor version lower to override the version from package.json. At the same time, requiredVersion must match the actual project version and be the same as in the host application.
+
+This workaround ensures that Module Federation will first attempt to load libraries from the host application before falling back to its own set of libraries.
 
 (I know this is not entirely correct, and I would appreciate any suggestions on how to achieve the same effect in a more elegant and proper way.)
 
